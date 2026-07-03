@@ -1,7 +1,0 @@
-streamlit
-yfinance
-pandas
-plotly
-akshare
-openpyxl
-supabase

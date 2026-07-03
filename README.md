@@ -1,26 +1,37 @@
-# 基金盘中估算工具 - 云端版 v3.0
+# 基金盘中估算工具 V4.0 - Supabase 数据库版
 
-## v3.0 变化
+## 上传文件
 
-### 估算逻辑
-- 已知重仓股票：按当前今日涨跌幅 × 持仓占比计算贡献
-- 现金：默认0涨跌
-- 其他资产：可手动输入今日估算涨跌幅
-- 未知仓位：保守估算中不计算，按0处理
+上传到 GitHub：
+- app.py
+- requirements.txt
+- README.md
+- supabase_schema.sql
+- .gitignore
 
-### 显示内容
-- 已知股票占比
-- 现金占比
-- 其他资产占比
-- 未知仓位
-- 保守估算涨跌幅与盈亏
-- 推演估算涨跌幅与盈亏
-- 基金盘中5分钟估算走势
+Streamlit Cloud Main file:
+app.py
 
-### 关于5分钟走势
-开盘后刷新，程序会抓取当日5分钟K：
-- 每个股票每5分钟计算一次今日涨跌幅
-- 再按重仓占比加权
-- 得到基金盘中每5分钟的估算涨跌曲线
+## Streamlit Secrets
 
-注意：Yahoo Finance 可能有延迟，不保证严格实时，只适合盘中粗略估算。
+在 Streamlit Cloud → App → Settings → Secrets 添加：
+
+SUPABASE_URL = "你的 Project URL"
+SUPABASE_KEY = "你的 Publishable key 或 anon public key"
+
+## Supabase 建表
+
+在 Supabase → SQL Editor 中运行：
+
+supabase_schema.sql
+
+## 说明
+
+V4.0 使用 Supabase 保存：
+- 股票
+- 行业ETF
+- 基金
+- 重仓股票
+- 行业分布
+
+刷新网页、关闭网页、重新部署后数据不会丢。
